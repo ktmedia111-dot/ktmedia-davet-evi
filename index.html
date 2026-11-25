@@ -248,7 +248,7 @@ function cal(){if(kapali||!a.paused)return;var p=a.play();if(p&&p.catch)p.catch(
 function ilk(e){if(basladi)return;if(e.target&&e.target.closest&&e.target.closest('.muz,a'))return;cal()}
 ['pointerdown','mousedown','touchstart','pointerup','touchend','click','keydown','wheel','scroll'].forEach(function(n){document.addEventListener(n,ilk,{capture:true,passive:true})});
 b.forEach(function(x){x.addEventListener('click',function(){if(a.paused){kapali=false;cal()}else{kapali=true;a.pause()}})});
-a.addEventListener('play',g);a.addEventListener('pause',g);
+['play','playing','pause'].forEach(function(n){a.addEventListener(n,g)});g();
 document.addEventListener('visibilitychange',function(){if(document.hidden)a.pause();else if(basladi)cal()});
 /* kapakta kaydırmayı betik yapar: parmak kalkınca tarayıcı bunu dokunuş sayar, müzik ilk kaydırmada başlar */
 var k=document.querySelector('.cv'),s2=k&&k.nextElementSibling,y0=null;
